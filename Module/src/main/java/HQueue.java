@@ -1,10 +1,5 @@
 public interface HQueue {
-    /**
-     * returns a fresh (empty) queue
-     */
-    HuffmanTree newQueue();
-
-    /**
+   /**
      * return true if the queue is empty
      */
     boolean isEmpty();
@@ -15,7 +10,7 @@ public interface HQueue {
     int count();
 
     /**
-     * enqueue a true
+     * enqueue a tree
      */
     void enqueue(HuffmanTree tree);
 
