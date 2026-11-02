@@ -38,44 +38,13 @@ public class Huffman {
         return freq;
     }
 
-    /**
-     * Adds node to collection, preserving whatever ordering your chosen
-     * implementation of collection relies on to make the minimum element
-     * easy to find.
-     *
-     * You choose what kind of Collection to pass in when you call this
-     * from createHuffTree(). For example, an ArrayList kept sorted by
-     * HuffmanNode.comesBefore() as you insert (an "ordered list"), or a
-     * PriorityQueue. How you implement this method depends on which you pick.
-     */
-    public static void addNode(Collection<HuffmanNode> collection, HuffmanNode node) {
-        // TODO: implement
-    }
-
-    /**
-     * Removes and returns the smallest HuffmanNode in collection, using
-     * HuffmanNode.comesBefore() (or compareTo(), which relies on it) to
-     * determine "smallest". Returns null if collection is empty.
-     *
-     * This must work for ANY Collection passed in -- not just the one you
-     * use inside createHuffTree(). For example, if you back createHuffTree()
-     * with a PriorityQueue, poll() it; for any other collection, find the
-     * minimum node and remove it.
-     */
-    public static HuffmanNode removeMin(Collection<HuffmanNode> collection) {
-        // TODO: implement
-        return null;
-    }
 
     /**
      * Builds a Huffman tree from an array of character frequencies (as
      * produced by cntFreq()) and returns the root HuffmanNode of the tree.
      *
-     * Use addNode()/removeMin() above to manage the collection of
-     * not-yet-combined nodes as you build the tree -- pick whichever
-     * concrete Collection type you want to back them with (e.g. a sorted
-     * ArrayList, or a PriorityQueue). The rest of this method, and the
-     * resulting tree, should not depend on which one you chose.
+     * Use an HQueue to manage the collection of
+     * not-yet-combined nodes as you build the tree.
      *
      * Special cases:
      *  - If freq contains no non-zero counts (empty input file), return null
@@ -100,7 +69,7 @@ public class Huffman {
      * left/right branch to build a code out of; huffmanEncode/huffmanDecode
      * handle that case entirely through the header.
      */
-    public static String[] createCode(HuffmanNode root) {
+    public static String[] createCode(HuffmanTree root) {
         String[] codes = new String[NUM_CHARS];
         Arrays.fill(codes, "");
         // TODO: implement

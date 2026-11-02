@@ -26,10 +26,10 @@ public class HuffmanTest {
 
     @Test
     public void testComesBefore() {
-        HuffmanNode d = new HuffmanNode('d', 5);
-        HuffmanNode k = new HuffmanNode('k', 5);
-        assertTrue(HuffmanNode.comesBefore(d, k));
-        assertFalse(HuffmanNode.comesBefore(k, d));
+        HuffmanLeaf d = new HuffmanLeaf(5, 'd');
+        HuffmanLeaf k = new HuffmanLeaf(5, 'k');
+        assertTrue(d.comesBefore(k));
+        assertFalse(k.comesBefore(d));
     }
 
     @Test
