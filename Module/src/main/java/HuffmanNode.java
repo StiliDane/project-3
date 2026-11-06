@@ -12,14 +12,63 @@
 public record HuffmanNode(int charAscii, int freq, HuffmanTree left, HuffmanTree right)
         implements HuffmanTree{
 
+    /**
+     * Returns true if this object comes before the other object
+     * If other is not a HuffmanNode or a HuffmanLeaf the method returns null
+     */
      public boolean comesBefore(HuffmanTree other) {
-        // TODO: implement
-        return false;
+         int otherFreq;
+         int otherChar;
+
+         if (other instanceof HuffmanNode(int ascii, int freq1, _, _)) {
+             otherFreq = freq1;
+             otherChar = ascii;
+         } else if (other instanceof HuffmanLeaf(int freq1, char ascii)) {
+             otherFreq = freq1;
+             otherChar = ascii;
+         } else {
+             return false;
+         }
+
+         if (this.freq != otherFreq) {
+             return this.freq < otherFreq;
+         }
+         return this.charAscii < otherChar;
     }
 
+    /**
+     * Combines a HuffmanTree with either another HuffmanTree or a HuffmanLeaf
+     * The higher priority of the two goes on the left and the other on the right
+     * The frequency is the combined frequency of the previous two Trees
+     * The charAscii is the minimum of the previous two Trees
+     */
     public HuffmanTree combine(HuffmanTree other) {
-        // TODO: implement
-        return null;
+        int finalFreq;
+        int finalChar;
+        HuffmanTree newLeft;
+        HuffmanTree newRight;
+
+        // Properly gathers the new character and frequency of the new node
+        if (other instanceof HuffmanNode(int ascii, int freq1, _, _)) {
+            finalFreq = this.freq + freq1;
+            finalChar = Math.min(this.charAscii, ascii);
+        } else if (other instanceof HuffmanLeaf(int freq1, char ascii)) {
+            finalFreq = this.freq + freq1;
+            finalChar = Math.min(this.charAscii, ascii);
+        } else {
+            return null;
+        }
+
+        // Properly gathers the left and right branches of the new node
+        if (this.comesBefore(other)){
+            newLeft = this;
+            newRight = other;
+        } else {
+            newLeft = other;
+            newRight = this;
+        }
+
+        return new HuffmanNode(finalChar, finalFreq, newLeft, newRight);
     }
 
     /**

@@ -1,0 +1,13 @@
+11/3/2026 from 10:20 to 2:30
+- The priority queue to be used for leaves
+- Created the methods inside HuffmanNode to be used to test and combine them with other nodes
+- Coded the HuffMan Frequency alg
+- Coded the createHuffTree alg
+- Coded the createCode alg
+- Coded the Encode alg
+- Coded the createHeader alg
+
+11/3/2026 from 9:00 - 10:00
+- Created the Parse Header function
+- Created the Decode function
+- Bug fixed the test files not properly linking
